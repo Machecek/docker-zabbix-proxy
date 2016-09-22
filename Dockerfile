@@ -3,7 +3,7 @@
 # Pull base image
 FROM ubuntu:14.04
 
-MAINTAINER Nickolai Barnum <nbarnum@users.noreply.github.com>
+MAINTAINER Toth Martin <machecek@users.noreply.github.com>
 
 ENV ZABBIX_VERSION 2.4
 
@@ -18,7 +18,11 @@ RUN \
                      snmp-mibs-downloader \
                      zabbix-get \
                      zabbix-proxy-sqlite3 \
-                     zabbix-sender && \
+                     zabbix-sender \
+                     tcpdump \
+                     telnet \
+                     openssh-client \
+                     iptables && \
   apt-get autoremove -y && apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
   mkdir -p /var/lib/sqlite
